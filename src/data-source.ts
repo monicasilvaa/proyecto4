@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
     password: "1234",
     database: "estudioTatuajes",
     entities: [],
-    migrations: [],
+    migrations: [`${__dirname}/migrations/**/*{.js,.ts}`],
     synchronize: false,
     logging: false,
  });
