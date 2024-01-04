@@ -1,4 +1,7 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { User } from "./User";
+import { Center } from "./Center";
+import { Service } from "./Service";
 
 @Entity()
 export class Appointment {
@@ -24,6 +27,26 @@ export class Appointment {
 
     @DeleteDateColumn()
     deleted_date?: Date; 
+
+    @ManyToOne ( () => User, (user) => user.clientAppointments)
+    @JoinColumn ({ name: "client_user_id" })
+    
+    clientUser!: User;
+
+    @ManyToOne ( () => User, (user) => user.employeeAppointments)
+    @JoinColumn ({ name: "employee_user_id" })
+    
+    employeeUser!: User;
+
+    @ManyToOne ( () => Center, (center) => center.appointments)
+    @JoinColumn ({ name: "center_id" })
+    
+    center!: Center;
+
+    @ManyToOne ( () => Service, (service) => service.appointments)
+    @JoinColumn ({ name: "service_id" })
+    
+    service!: Service;
 
 
 }

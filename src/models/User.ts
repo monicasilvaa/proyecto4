@@ -1,4 +1,6 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Role } from "./Role";
+import { Appointment } from "./Appointment";
 
 @Entity("user")
 export class User {
@@ -41,6 +43,18 @@ export class User {
 
     @DeleteDateColumn()
     deleted_date?: Date; 
+
+    @ManyToOne(() => Role, (role) => role.users)
+    @JoinColumn({ name: "role_id" })
+    role!: Role;
+
+    @OneToMany ( () => Appointment, (appointment) => appointment.clientUser)
+
+    clientAppointments!: Appointment[];
+
+    @OneToMany ( () => Appointment, (appointment) => appointment.employeeUser)
+
+    employeeAppointments!: Appointment[];
 
 
 }

@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
     username: "root",
     password: "1234",
     database: "estudioTatuajes",
-    entities: [],
+    entities: [`${__dirname}/../models/**/*{.js,.ts}`],
     migrations: [`${__dirname}/migrations/**/*{.js,.ts}`],
     synchronize: false,
     logging: false,

@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Appointment } from "./Appointment";
 
 @Entity()
 export class Center {
@@ -26,5 +27,9 @@ export class Center {
 
     @DeleteDateColumn()
     deleted_date?: Date; 
+
+    @OneToMany ( () => Appointment, (appointment) => appointment.center)
+
+    appointments!: Appointment[];
 
 }
