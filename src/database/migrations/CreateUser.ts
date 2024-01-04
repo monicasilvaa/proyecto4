@@ -47,6 +47,10 @@ export class CreateUser1704367341780 implements MigrationInterface {
                      length: "15",
                   },
                   {
+                     name: "role_id",
+                     type: "int",
+                  },
+                  {
                      name: "birthday_date",
                      type: "timestamp",
                   },
@@ -61,6 +65,13 @@ export class CreateUser1704367341780 implements MigrationInterface {
                   {
                      name: "deleted_date",
                      type: "timestamp",
+                  },
+               ],
+               foreignKeys: [
+                  {
+                     columnNames: ["role_id"],
+                     referencedTableName: "role",
+                     referencedColumnNames: ["id"],
                   },
                ],
             }),

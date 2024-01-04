@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { Role } from "./Role";
 import { Appointment } from "./Appointment";
+import { Portfolio } from "./Portfolio";
 
 @Entity("user")
 export class User {
@@ -55,6 +56,10 @@ export class User {
     @OneToMany ( () => Appointment, (appointment) => appointment.employeeUser)
 
     employeeAppointments!: Appointment[];
+
+    @OneToMany ( () => Portfolio, (portfolio) => portfolio.employee_user)
+
+    portfolios!: Portfolio[];
 
 
 }
