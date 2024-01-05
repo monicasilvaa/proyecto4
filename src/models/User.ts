@@ -2,6 +2,7 @@ import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToO
 import { Role } from "./Role";
 import { Appointment } from "./Appointment";
 import { Portfolio } from "./Portfolio";
+import { EmployeeCenter } from "./EmployeeCenter";
 
 @Entity("user")
 export class User {
@@ -60,6 +61,9 @@ export class User {
     @OneToMany ( () => Portfolio, (portfolio) => portfolio.employee_user)
 
     portfolios!: Portfolio[];
+
+    @OneToMany(() => EmployeeCenter, (employeeCenter) => employeeCenter.employee)
+    employeeCenter!: EmployeeCenter[];
 
 
 }

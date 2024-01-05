@@ -3,7 +3,7 @@ import { User } from "./User";
 import { Center } from "./Center";
 import { Service } from "./Service";
 
-@Entity()
+@Entity("appointment")
 export class Appointment {
     @PrimaryGeneratedColumn()
     id!: number;

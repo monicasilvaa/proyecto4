@@ -1,7 +1,8 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { Appointment } from "./Appointment";
+import { EmployeeCenter } from "./EmployeeCenter";
 
-@Entity()
+@Entity("center")
 export class Center {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -9,27 +10,20 @@ export class Center {
     @Column({ length:50 })
     name!: string;
 
-    @Column({ length:200 })
-    location!: string;
+    @Column({ length:255 })
+    address!: string;
 
-    @CreateDateColumn({
-        type: "timestamp",
-        default: () => "CURRENT_TIMESTAMP(6)"
-    })
-    register_date!: Date;
+    @Column({length: 15})
+    phone!: string;
 
-    @UpdateDateColumn({
-        type: "timestamp",
-        default: () => "CURRENT_TIMESTAMP(6)",
-        onUpdate: "CURRENT_TIMESTAMP(6)"
-    })
-    modified_date!: Date;
-
-    @DeleteDateColumn()
-    deleted_date?: Date; 
+    @Column({length: 100})
+    business_hours!: string; 
 
     @OneToMany ( () => Appointment, (appointment) => appointment.center)
 
     appointments!: Appointment[];
+
+    @OneToMany(() => EmployeeCenter, (employeeCenter) => employeeCenter.center)
+    employeeCenter!: EmployeeCenter[];
 
 }
