@@ -1,8 +1,8 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { Appointment } from "./Appointment";
-import { EmployeeCenter } from "./EmployeeCenter";
+import { User } from "./User";
 
-@Entity("center")
+@Entity("centers")
 export class Center {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -23,7 +23,8 @@ export class Center {
 
     appointments!: Appointment[];
 
-    @OneToMany(() => EmployeeCenter, (employeeCenter) => employeeCenter.center)
-    employeeCenter!: EmployeeCenter[];
+    @ManyToMany(() => User, (user) => user.centers)
+    @JoinTable({ name: 'employeeCenters' })
+    users!: User[];
 
 }

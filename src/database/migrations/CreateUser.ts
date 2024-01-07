@@ -5,7 +5,7 @@ export class CreateUser1704367341783 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-               name: "user",
+               name: "users",
                columns: [
                   {
                      name: "id",
@@ -57,14 +57,17 @@ export class CreateUser1704367341783 implements MigrationInterface {
                   {
                      name: "register_date",
                      type: "timestamp",
+                     default: "CURRENT_TIMESTAMP",
                   },
                   {
                      name: "modified_date",
                      type: "timestamp",
+                     default: "CURRENT_TIMESTAMP",
                   },
                   {
                      name: "deleted_date",
                      type: "timestamp",
+                     isNullable: true,
                   },
                ],
                foreignKeys: [

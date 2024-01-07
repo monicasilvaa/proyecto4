@@ -5,7 +5,7 @@ export class CreatePortfolio1704367341785 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-               name: "portfolio",
+               name: "portfolios",
                columns: [
                   {
                      name: "id",

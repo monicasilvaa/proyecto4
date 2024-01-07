@@ -1,10 +1,10 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { Role } from "./Role";
 import { Appointment } from "./Appointment";
 import { Portfolio } from "./Portfolio";
-import { EmployeeCenter } from "./EmployeeCenter";
+import { Center } from "./Center";
 
-@Entity("user")
+@Entity("users")
 export class User {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -62,8 +62,9 @@ export class User {
 
     portfolios!: Portfolio[];
 
-    @OneToMany(() => EmployeeCenter, (employeeCenter) => employeeCenter.employee)
-    employeeCenter!: EmployeeCenter[];
+    @ManyToMany(() => Center, (center) => center.users)
+    @JoinTable({ name: 'employeeCenters' })
+    centers!: Center[];
 
 
 }

@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Portfolio } from "./Portfolio";
 
-@Entity("portfolio_file")
+@Entity("portfolio_files")
 export class Portfolio_file {
     @PrimaryGeneratedColumn()
     id!: number;

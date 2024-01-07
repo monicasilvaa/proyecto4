@@ -5,7 +5,7 @@ export class CreateCenter1704367341782 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-               name: "center",
+               name: "centers",
                columns: [
                   {
                      name: "id",

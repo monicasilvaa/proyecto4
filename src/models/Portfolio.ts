@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, Pri
 import { User } from "./User";
 import { Portfolio_file } from "./Portfolio_file";
 
-@Entity("portfolio")
+@Entity("portfolios")
 export class Portfolio {
     @PrimaryGeneratedColumn()
     id!: number;
