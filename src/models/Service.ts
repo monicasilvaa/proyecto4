@@ -6,7 +6,7 @@ export class Service {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ length:50 })
+    @Column({ unique: true })
     name!: string;
 
     @OneToMany ( () => Appointment, (appointment) => appointment.service)

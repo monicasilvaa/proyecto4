@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreatePortfolio1704367341785 implements MigrationInterface {
+export class CreateRole1704367341780 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-               name: "portfolios",
+               name: "roles",
                columns: [
                   {
                      name: "id",
@@ -20,29 +20,14 @@ export class CreatePortfolio1704367341785 implements MigrationInterface {
                      length: "50",
                      isUnique: true,
                   },
-                  {
-                    name: "employee_user_id",
-                    type: "int",
-                 },
-                 {
-                    name: "created_at",
-                    type: "timestamp",
-                 },
                ],
-               foreignKeys: [
-                {
-                   columnNames: ["employee_user_id"],
-                   referencedTableName: "user",
-                   referencedColumnNames: ["id"],
-                },
-             ],
             }),
             true
          );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("portfolio");
+        await queryRunner.dropTable("roles");
     }
 
 }

@@ -27,7 +27,7 @@ export class CreateService1704367341781 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("service");
+        await queryRunner.dropTable("services");
     }
 
 }

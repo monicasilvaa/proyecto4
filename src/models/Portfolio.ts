@@ -7,7 +7,7 @@ export class Portfolio {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ length:50 })
+    @Column({ unique: true })
     name!: string;
 
     @CreateDateColumn({

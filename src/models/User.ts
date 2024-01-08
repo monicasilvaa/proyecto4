@@ -9,22 +9,22 @@ export class User {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ length:40 })
+    @Column({ unique: true })
     username!: string;
 
-    @Column({ length:255 })
+    @Column()
     first_name!: string;
 
-    @Column({ length:255 })
+    @Column()
     last_name!: string;
 
     @Column({ unique: true })
     email!: string;
 
-    @Column({ length: 255})
+    @Column()
     password_hash!: string;
 
-    @Column({ length: 15})
+    @Column()
     phone!: string;
 
     @Column()
@@ -63,7 +63,17 @@ export class User {
     portfolios!: Portfolio[];
 
     @ManyToMany(() => Center, (center) => center.users)
-    @JoinTable({ name: 'employeeCenters' })
+    @JoinTable({ 
+        name: 'employeeCenters',
+        joinColumn: {
+          name: "center_id",
+          referencedColumnName: "id",
+       },
+       inverseJoinColumn: {
+          name: "employee_id",
+          referencedColumnName: "id",
+       },
+    })
     centers!: Center[];
 
 

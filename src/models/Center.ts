@@ -7,16 +7,16 @@ export class Center {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ length:50 })
+    @Column()
     name!: string;
 
-    @Column({ length:255 })
+    @Column()
     address!: string;
 
-    @Column({length: 15})
+    @Column()
     phone!: string;
 
-    @Column({length: 100})
+    @Column()
     business_hours!: string; 
 
     @OneToMany ( () => Appointment, (appointment) => appointment.center)
@@ -24,7 +24,17 @@ export class Center {
     appointments!: Appointment[];
 
     @ManyToMany(() => User, (user) => user.centers)
-    @JoinTable({ name: 'employeeCenters' })
+    @JoinTable({ 
+        name: 'employeeCenters',
+        joinColumn: {
+          name: "employee_id",
+          referencedColumnName: "id",
+       },
+       inverseJoinColumn: {
+          name: "center_id",
+          referencedColumnName: "id",
+       },
+    })
     users!: User[];
 
 }

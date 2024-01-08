@@ -21,12 +21,12 @@ export class CreateEmployeeCenter1704447713484 implements MigrationInterface {
                foreignKeys: [
                 {
                    columnNames: ["employee_id"],
-                   referencedTableName: "user",
+                   referencedTableName: "users",
                    referencedColumnNames: ["id"],
                 },
                 {
                     columnNames: ["center_id"],
-                    referencedTableName: "center",
+                    referencedTableName: "centers",
                     referencedColumnNames: ["id"],
                  },
              ],
@@ -37,7 +37,7 @@ export class CreateEmployeeCenter1704447713484 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("employeeCenter");
+        await queryRunner.dropTable("employeeCenters");
     }
 
 }

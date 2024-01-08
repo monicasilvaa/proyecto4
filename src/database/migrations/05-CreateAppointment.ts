@@ -55,22 +55,22 @@ export class CreateAppointment1704367341784 implements MigrationInterface {
                foreignKeys: [
                   {
                      columnNames: ["client_user_id"],
-                     referencedTableName: "user",
+                     referencedTableName: "users",
                      referencedColumnNames: ["id"],
                   },
                   {
                      columnNames: ["employee_user_id"],
-                     referencedTableName: "user",
+                     referencedTableName: "users",
                      referencedColumnNames: ["id"],
                   },
                   {
                      columnNames: ["service_id"],
-                     referencedTableName: "service",
+                     referencedTableName: "services",
                      referencedColumnNames: ["id"],
                   },
                   {
                      columnNames: ["center_id"],
-                     referencedTableName: "center",
+                     referencedTableName: "centers",
                      referencedColumnNames: ["id"],
                   },
                ],
@@ -80,7 +80,7 @@ export class CreateAppointment1704367341784 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("appointment");
+        await queryRunner.dropTable("appointments");
     }
 
 
