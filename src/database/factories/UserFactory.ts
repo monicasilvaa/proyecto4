@@ -16,7 +16,7 @@ export class UserFactory extends BaseFactory<User> {
      });
     user.first_name = faker.person.firstName();
     user.last_name = faker.person.lastName();
-    user.phone = faker.phone.number();
+    user.phone = faker.string.numeric({ length: 9});
     user.birthday_date = faker.date.birthdate({ min: 18, max: 120, mode: 'age' })
 
     return user;

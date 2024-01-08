@@ -8,16 +8,10 @@ export class Center {
     id!: number;
 
     @Column()
-    name!: string;
-
-    @Column()
     address!: string;
 
     @Column()
     phone!: string;
-
-    @Column()
-    business_hours!: string; 
 
     @OneToMany ( () => Appointment, (appointment) => appointment.center)
 

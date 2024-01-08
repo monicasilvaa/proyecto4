@@ -67,8 +67,6 @@ export const seedUsersWithRole = async ({
 
 const getRoleByName = async (roleName: string) => {
   // Lógica para obtener la instancia de Role por nombre
-  // Puedes ajustar esto según tu estructura de datos
-  // Aquí asumo que tienes un método `findOne` en tu repositorio de Role
   const roleRepository = AppDataSource.getRepository(Role);
   const role = await roleRepository.findOne({ where: { name: roleName } });
   return role;

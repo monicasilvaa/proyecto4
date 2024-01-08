@@ -15,11 +15,6 @@ export class CreateCenter1704367341782 implements MigrationInterface {
                      generationStrategy: "increment",
                   },
                   {
-                     name: "name",
-                     type: "varchar",
-                     length: "50",
-                  },
-                  {
                     name: "address",
                     type: "varchar",
                     length: "255",
@@ -28,11 +23,6 @@ export class CreateCenter1704367341782 implements MigrationInterface {
                     name: "phone",
                     type: "varchar",
                     length: "15",
-                 },
-                 {
-                    name: "business_hours",
-                    type: "varchar",
-                    length: "100",
                  },
                ],
             }),

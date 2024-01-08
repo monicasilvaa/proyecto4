@@ -1,4 +1,6 @@
 import { roleSeeder } from "./RoleSeeder";
+import { serviceSeeder } from "./ServiceSeeder";
+import { userSeeder } from "./UserSeeder";
 
 
 
@@ -6,4 +8,6 @@ import { roleSeeder } from "./RoleSeeder";
 
 (async () => {
     await roleSeeder();
+    await userSeeder();
+    await serviceSeeder();
 })();
