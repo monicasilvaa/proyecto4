@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 import { Center } from "./Center";
 
 @Entity("business_hours")
@@ -16,5 +16,8 @@ export class BusinessHour {
   closingTime!: string;
 
   @ManyToOne(() => Center, (center) => center.businessHours)
+  @JoinColumn({ name: "center_id" })
   center!: Center;
+
+
 }
