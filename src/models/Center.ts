@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm"
 import { Appointment } from "./Appointment";
 import { User } from "./User";
+import { BusinessHour } from "./BusinessHour";
 
 @Entity("centers")
 export class Center {
@@ -30,5 +31,8 @@ export class Center {
        },
     })
     users!: User[];
+
+    @OneToMany(() => BusinessHour, (businessHour) => businessHour.center)
+    businessHours!: BusinessHour[];
 
 }
