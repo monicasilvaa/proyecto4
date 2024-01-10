@@ -37,19 +37,22 @@ export class CreateAppointment1704367341784 implements MigrationInterface {
                   {
                      name: "register_date",
                      type: "timestamp",
+                     default: "CURRENT_TIMESTAMP",
                   },
                   {
                      name: "modified_date",
                      type: "timestamp",
+                     default: "CURRENT_TIMESTAMP",
                   },
                   {
                      name: "modified_by",
                      type: "varchar",
-                     length: "255",
+                     length: "40",
                   },
                   {
                      name: "deleted_date",
                      type: "timestamp",
+                     default: "CURRENT_TIMESTAMP",
                   },
                ],
                foreignKeys: [

@@ -11,6 +11,8 @@ export class Appointment {
     @Column()
     appointment_date!: Date;
 
+    @Column({ unique: true })
+    modified_by!: string; //Aquí irá el username de la entidad User al hacer el seeder
 
     @CreateDateColumn({
         type: "timestamp",
