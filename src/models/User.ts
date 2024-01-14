@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { Role } from "./Role";
 import { Appointment } from "./Appointment";
 import { Portfolio } from "./Portfolio";
@@ -58,7 +58,7 @@ export class User {
 
     employeeAppointments!: Appointment[];
 
-    @OneToMany ( () => Portfolio, (portfolio) => portfolio.employee_user)
+    @OneToOne ( () => Portfolio, (portfolio) => portfolio.employee_user)
 
     portfolios!: Portfolio[];
 

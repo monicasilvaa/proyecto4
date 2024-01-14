@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 import { User } from "./User";
 import { Portfolio_file } from "./Portfolio_file";
 
@@ -16,7 +16,7 @@ export class Portfolio {
     })
     created_at!: Date;
 
-    @ManyToOne(() => User, (user) => user.portfolios)
+    @OneToOne(() => User, (user) => user.portfolios)
     @JoinColumn({ name: "employee_user_id" })
     employee_user!: User;
 
