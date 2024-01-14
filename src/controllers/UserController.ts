@@ -119,4 +119,70 @@ export class UserController implements Controller {
          });
       }
    }
+
+   async getClientAppointments(req: Request, res: Response): Promise<void | Response<any>> {
+      try {
+         const userId = +req.tokenData.userId;
+
+         const userRepository = AppDataSource.getRepository(User);
+         const user = await userRepository.findOne({
+            where: {
+               id: userId
+            },
+            relations: {
+               clientAppointments: true
+            }
+         });
+
+         if (!user) {
+            return res.status(404).json({
+               message: "User not found",
+            });
+         }
+
+         const clientAppointments = user.clientAppointments;
+
+         res.status(200).json({
+            userId: user.id,
+            clientAppointments,
+         });
+      } catch (error) {
+         res.status(500).json({
+            message: "Error while getting employeeAppointments",
+         });
+      }
+   }
+
+   async getEmployeeAppointments(req: Request, res: Response): Promise<void | Response<any>> {
+      try {
+         const userId = +req.tokenData.userId;
+
+         const userRepository = AppDataSource.getRepository(User);
+         const user = await userRepository.findOne({
+            where: {
+               id: userId
+            },
+            relations: {
+               employeeAppointments: true
+            }
+         });
+
+         if (!user) {
+            return res.status(404).json({
+               message: "User not found",
+            });
+         }
+
+         const employeeAppointments = user.employeeAppointments;
+
+         res.status(200).json({
+            userId: user.id,
+            employeeAppointments,
+         });
+      } catch (error) {
+         res.status(500).json({
+            message: "Error while getting employeeAppointments",
+         });
+      }
+   }
 }

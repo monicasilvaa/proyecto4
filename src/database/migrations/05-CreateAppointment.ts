@@ -52,7 +52,7 @@ export class CreateAppointment1704367341784 implements MigrationInterface {
                   {
                      name: "deleted_date",
                      type: "timestamp",
-                     default: "CURRENT_TIMESTAMP",
+                     isNullable: true,
                   },
                ],
                foreignKeys: [
