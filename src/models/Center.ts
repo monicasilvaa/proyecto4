@@ -6,7 +6,7 @@ import { BusinessHour } from "./BusinessHour";
 @Entity("centers")
 export class Center {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column()
     address!: string;

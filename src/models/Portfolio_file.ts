@@ -4,7 +4,7 @@ import { Portfolio } from "./Portfolio";
 @Entity("portfolio_files")
 export class Portfolio_file {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column({ unique: true })
     name!: string;

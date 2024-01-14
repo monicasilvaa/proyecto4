@@ -4,7 +4,7 @@ import { Appointment } from "./Appointment";
 @Entity("services")
 export class Service {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column({ unique: true })
     name!: string;

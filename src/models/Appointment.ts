@@ -6,7 +6,7 @@ import { Service } from "./Service";
 @Entity("appointments")
 export class Appointment {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column()
     appointment_date!: Date;

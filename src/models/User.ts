@@ -7,7 +7,7 @@ import { Center } from "./Center";
 @Entity("users")
 export class User {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column({ unique: true })
     username!: string;
@@ -34,14 +34,14 @@ export class User {
         type: "timestamp",
         default: () => "CURRENT_TIMESTAMP(6)"
     })
-    register_date!: Date;
+    register_date?: Date;
 
     @UpdateDateColumn({
         type: "timestamp",
         default: () => "CURRENT_TIMESTAMP(6)",
         onUpdate: "CURRENT_TIMESTAMP(6)"
     })
-    modified_date!: Date;
+    modified_date?: Date;
 
     @DeleteDateColumn()
     deleted_date?: Date; 
@@ -52,15 +52,15 @@ export class User {
 
     @OneToMany ( () => Appointment, (appointment) => appointment.clientUser)
 
-    clientAppointments!: Appointment[];
+    clientAppointments?: Appointment[];
 
     @OneToMany ( () => Appointment, (appointment) => appointment.employeeUser)
 
-    employeeAppointments!: Appointment[];
+    employeeAppointments?: Appointment[];
 
     @OneToOne ( () => Portfolio, (portfolio) => portfolio.employee_user)
 
-    portfolios!: Portfolio[];
+    portfolios?: Portfolio[];
 
     @ManyToMany(() => Center, (center) => center.users)
     @JoinTable({ 
@@ -74,7 +74,7 @@ export class User {
           referencedColumnName: "id",
        },
     })
-    centers!: Center[];
+    centers?: Center[];
 
 
 }

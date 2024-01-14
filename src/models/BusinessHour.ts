@@ -4,7 +4,7 @@ import { Center } from "./Center";
 @Entity("business_hours")
 export class BusinessHour {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id?: number;
 
   @Column()
   dayOfWeek!: string;
