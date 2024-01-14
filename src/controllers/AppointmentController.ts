@@ -5,7 +5,7 @@ import { AppDataSource } from "../database/data-source";
 
 // -----------------------------------------------------------------------------
 
-export class UserController implements Controller {
+export class AppointmentController implements Controller {
    async getAll(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const userRepository = AppDataSource.getRepository(User);
