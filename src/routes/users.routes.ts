@@ -10,14 +10,16 @@ const router = express.Router();
 const userController = new UserController();
 
 router.get("/", userController.getAll);
-router.get("/profile/:id", userController.getById);
+router.get("/tattooArtists", userController.getTattooArtistList);
+
+router.get("/profile/:id",auth, userController.getById);
 router.get("/myAppointments", auth, isClient, userController.getClientAppointments);
 router.get("/tattooArtistAppointments", auth, isTattooArtist, userController.getEmployeeAppointments);
 
-router.patch("/profile/:id", userController.update);
+router.patch("/profile/:id",auth, userController.update);
 
-router.post("/", userController.create);
+router.post("/",auth, userController.create);
 
-router.delete("/:id", userController.delete);
+router.delete("/:id",auth, userController.delete);
 
 export default router;

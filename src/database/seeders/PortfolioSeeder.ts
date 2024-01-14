@@ -29,7 +29,7 @@ export const portfolioSeeder = async () => {
 
     //Obtener todos los usuarios con el rol establecido en la constante role
     const employeeUsers = await userRepository.findBy({
-        role: { id: role.id },
+        role: role,
     }) as User[];
 
     //Crear un array de portfolios para almacenar los portfolios a insertar en base de datos 

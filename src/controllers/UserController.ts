@@ -2,6 +2,7 @@ import { Controller } from "./Controller";
 import { Request, Response } from "express";
 import { User } from "../models/User";
 import { AppDataSource } from "../database/data-source";
+import { UserRoles } from "../constants/UserRoles";
 
 // -----------------------------------------------------------------------------
 
@@ -56,6 +57,28 @@ export class UserController implements Controller {
       } catch (error) {
          res.status(500).json({
             message: "Error while getting user",
+         });
+      }
+   }
+
+   //Listar tatuadores
+
+   async getTattooArtistList(req: Request, res: Response): Promise<void | Response<any>> {
+      try {
+         const userRepository = AppDataSource.getRepository(User);
+         const tattooArtists = await userRepository.find({
+            where: {
+               role: UserRoles.TATTOOARTIST
+            },
+            relations:{
+               portfolios: true
+            }
+         });
+
+         res.status(200).json(tattooArtists);
+      } catch (error) {
+         res.status(500).json({
+            message: "Error while getting Tattoo Artists",
          });
       }
    }
