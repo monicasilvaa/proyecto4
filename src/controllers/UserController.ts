@@ -6,6 +6,7 @@ import { UserRoles } from "../constants/UserRoles";
 import { StatusCodes } from "http-status-codes";
 import bcrypt from "bcrypt";
 import { Role } from "../models/Role";
+import { Center } from "../models/Center";
 
 // -----------------------------------------------------------------------------
 
@@ -152,6 +153,38 @@ export class UserController implements Controller {
          });
       }
    }
+
+   //Listar tatuadores por centro
+  async getTattooArtistsByCenter(req: Request, res: Response): Promise<void | Response<any>> {
+   try {
+     
+     const centerId = +req.params.centerId;
+
+     const centerRepository = AppDataSource.getRepository(Center);
+
+     const center = await centerRepository.findOne({
+       where: {
+         id: centerId
+       },
+       relations: {
+         users: true
+       }
+     });
+
+     if (!center) {
+         return res.status(400).json({
+            message: "Center not found",
+         });
+      }
+
+     res.status(200).json(center.users);
+   } catch (error) {
+     res.status(500).json({
+       message: "Error while getting tattoo artists by center",
+     });
+   }
+ }
+
 
    //Crear nuevo Tattoo Artist (Superadmin)
    async createTattooArtist(req: Request, res: Response): Promise<void | Response<any>> {

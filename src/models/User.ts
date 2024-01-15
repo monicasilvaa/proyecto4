@@ -65,14 +65,8 @@ export class User {
     @ManyToMany(() => Center, (center) => center.users)
     @JoinTable({ 
         name: 'employeeCenters',
-        joinColumn: {
-          name: "center_id",
-          referencedColumnName: "id",
-       },
-       inverseJoinColumn: {
-          name: "employee_id",
-          referencedColumnName: "id",
-       },
+        joinColumn: { name: "employee_id"},
+        inverseJoinColumn: { name: "center_id" },
     })
     centers?: Center[];
 

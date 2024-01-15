@@ -12,6 +12,7 @@ const userController = new UserController();
 
 router.get("/", userController.getAll);
 router.get("/tattooArtists", userController.getTattooArtistList);
+router.get("/tattooArtists/:centerId", userController.getTattooArtistsByCenter);
 
 router.get("/profile/:id",auth, userController.getById);
 router.get("/myAppointments", auth, isClient, userController.getClientAppointments);

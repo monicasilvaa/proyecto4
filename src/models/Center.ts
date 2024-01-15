@@ -20,16 +20,10 @@ export class Center {
 
     @ManyToMany(() => User, (user) => user.centers)
     @JoinTable({ 
-        name: 'employeeCenters',
-        joinColumn: {
-          name: "employee_id",
-          referencedColumnName: "id",
-       },
-       inverseJoinColumn: {
-          name: "center_id",
-          referencedColumnName: "id",
-       },
-    })
+      name: 'employeeCenters',
+      joinColumn: { name: "center_id"},
+      inverseJoinColumn: { name: "employee_id" },
+   })
     users!: User[];
 
     @OneToMany(() => BusinessHour, (businessHour) => businessHour.center)
