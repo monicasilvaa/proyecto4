@@ -6,26 +6,26 @@ import { Service } from "./Service";
 @Entity("appointments")
 export class Appointment {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column()
     appointment_date!: Date;
 
-    @Column({ unique: true })
-    modified_by!: string; //Aquí irá el username de la entidad User al hacer el seeder
+    @Column()
+    modified_by!: string; 
 
     @CreateDateColumn({
         type: "timestamp",
         default: () => "CURRENT_TIMESTAMP(6)"
     })
-    register_date!: Date;
+    register_date?: Date;
 
     @UpdateDateColumn({
         type: "timestamp",
         default: () => "CURRENT_TIMESTAMP(6)",
         onUpdate: "CURRENT_TIMESTAMP(6)"
     })
-    modified_date!: Date;
+    modified_date?: Date;
 
     @DeleteDateColumn()
     deleted_date?: Date; 

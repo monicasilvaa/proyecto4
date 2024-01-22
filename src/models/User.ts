@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { Role } from "./Role";
 import { Appointment } from "./Appointment";
 import { Portfolio } from "./Portfolio";
@@ -7,7 +7,7 @@ import { Center } from "./Center";
 @Entity("users")
 export class User {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column({ unique: true })
     username!: string;
@@ -34,14 +34,14 @@ export class User {
         type: "timestamp",
         default: () => "CURRENT_TIMESTAMP(6)"
     })
-    register_date!: Date;
+    register_date?: Date;
 
     @UpdateDateColumn({
         type: "timestamp",
         default: () => "CURRENT_TIMESTAMP(6)",
         onUpdate: "CURRENT_TIMESTAMP(6)"
     })
-    modified_date!: Date;
+    modified_date?: Date;
 
     @DeleteDateColumn()
     deleted_date?: Date; 
@@ -52,29 +52,23 @@ export class User {
 
     @OneToMany ( () => Appointment, (appointment) => appointment.clientUser)
 
-    clientAppointments!: Appointment[];
+    clientAppointments?: Appointment[];
 
     @OneToMany ( () => Appointment, (appointment) => appointment.employeeUser)
 
-    employeeAppointments!: Appointment[];
+    employeeAppointments?: Appointment[];
 
-    @OneToMany ( () => Portfolio, (portfolio) => portfolio.employee_user)
+    @OneToOne ( () => Portfolio, (portfolio) => portfolio.employee_user)
 
-    portfolios!: Portfolio[];
+    portfolios?: Portfolio[];
 
     @ManyToMany(() => Center, (center) => center.users)
     @JoinTable({ 
         name: 'employeeCenters',
-        joinColumn: {
-          name: "center_id",
-          referencedColumnName: "id",
-       },
-       inverseJoinColumn: {
-          name: "employee_id",
-          referencedColumnName: "id",
-       },
+        joinColumn: { name: "employee_id"},
+        inverseJoinColumn: { name: "center_id" },
     })
-    centers!: Center[];
+    centers?: Center[];
 
 
 }
