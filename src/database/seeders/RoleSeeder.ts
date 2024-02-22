@@ -20,11 +20,11 @@ export const roleSeeder = async () => {
       const clientRole = new Role();
       clientRole.name = "client";
 
-      const tattooArtisRole = new Role();
-      tattooArtisRole.name = "tattoo artist";
+      const tattooArtistRole = new Role();
+      tattooArtistRole.name = "tattoo artist";
 
       // Guardar los roles en la base de datos
-      await roleRepository.save([superadminRole, clientRole, tattooArtisRole]);
+      await roleRepository.save([superadminRole, clientRole, tattooArtistRole]);
 
       // Imprimir mensaje de éxito
       console.log("Seeding roles successfully completed");

@@ -56,7 +56,7 @@ Este proyecto se centra en el desarrollo del backend para un sistema de gestión
 
 ## Instrucciones para Instalación Local
 
-1. Clona este repositorio: `git clone https://github.com/monicasilvaa/proyecto4/tree/development`
+1. Clona este repositorio: `git clone https://github.com/monicasilvaa/proyecto4`
 2. Instala las dependencias: `npm install`
 3. Configura la base de datos (TypeOrm).
 4. Para ejecutar las migraciones: `db:migration`
@@ -71,12 +71,12 @@ Este proyecto se centra en el desarrollo del backend para un sistema de gestión
 - **Inicio de Sesión**: `POST /auth/login`
 - **Perfil de Usuario**: `GET /api/users/`
 - **Modificación de Datos del Perfil**: `PATCH /api/user//profile/:id`
-- **Creación de Citas**: `POST /api/appointments/`
-- **Edición de Citas**: `PATCH /api/appointments/:id`
+- **Creación de Citas**: `POST /api/appointments`
+- **Edición de Citas**: `PATCH /api/users/:id`
 - **Eliminación de Citas**: `DELETE /api/appointments/:id`
-- **Visualización de Citas como Cliente**: `GET /api/appointments/:id`
-- **Visualización de Citas con Tatuador**: `GET /api/appointments/:id`
-- **Listar Tatuadores**: `GET /api/users//tattooArtists`
+- **Visualización de Citas como Cliente**: `GET /api/users/myAppointments`
+- **Visualización de Citas con Tatuador**: `GET /api/users/tattooArtistAppointments`
+- **Listar Tatuadores**: `GET /api/users/tattooArtists`
 - **Listar Tatuadores por Centro (Extra)**: `GET /api/users/tattooArtists/:centerId`
 
 ## Objetivo
@@ -87,4 +87,3 @@ Este proyecto tiene como objetivo proporcionar un backend sólido y eficiente pa
 
 Este es el cuarto proyecto a realizar para el Bootcamp Geekshubs, destinado a desarrollar las habilidades en el manejo de tecnologías backend, bases de datos y buenas prácticas de desarrollo.
 
-![App Screenshot](images/ER%20DiagramaEstudioTatuajes.png)
