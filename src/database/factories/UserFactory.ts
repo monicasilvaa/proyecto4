@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
-import { User } from "../../models/User";
 import bcrypt from "bcrypt";
+import { User } from "../../models/User";
 import { BaseFactory } from "./BaseFactory";
 
 
@@ -18,7 +18,8 @@ export class UserFactory extends BaseFactory<User> {
     user.password_hash = bcrypt.hashSync("12345678", 10);
     user.phone = faker.string.numeric({ length: 9});
     user.birthday_date = faker.date.birthdate({ min: 18, max: 120, mode: 'age' })
-
+    user.photo = faker.image.avatar();
+    
     return user;
   }
 

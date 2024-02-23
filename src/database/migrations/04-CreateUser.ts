@@ -55,6 +55,11 @@ export class CreateUser1704367341783 implements MigrationInterface {
                      type: "date",
                   },
                   {
+                     name: "photo",
+                     type: "varchar",
+                     length: "255",
+                  },
+                  {
                      name: "register_date",
                      type: "timestamp",
                      default: "CURRENT_TIMESTAMP",

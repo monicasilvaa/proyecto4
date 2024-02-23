@@ -1,8 +1,8 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
-import { Role } from "./Role";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Appointment } from "./Appointment";
-import { Portfolio } from "./Portfolio";
 import { Center } from "./Center";
+import { Portfolio } from "./Portfolio";
+import { Role } from "./Role";
 
 @Entity("users")
 export class User {
@@ -26,6 +26,9 @@ export class User {
 
     @Column()
     phone!: string;
+
+    @Column()
+    photo?: string;
 
     @Column()
     birthday_date!: Date;
