@@ -30,7 +30,7 @@ export class User {
     @Column()
     photo?: string;
 
-    @Column()
+    @Column({type: 'date'})
     birthday_date!: Date;
 
     @CreateDateColumn({
