@@ -58,6 +58,7 @@ export class CreateUser1704367341783 implements MigrationInterface {
                      name: "photo",
                      type: "varchar",
                      length: "255",
+                     isNullable: true,
                   },
                   {
                      name: "register_date",

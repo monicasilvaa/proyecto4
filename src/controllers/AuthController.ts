@@ -1,11 +1,11 @@
-import { Request, Response } from "express";
-import {CreateClientRequestBody,LoginUserRequestBody,TokenData} from "../types/types";
-import { User } from "../models/User";
 import bcrypt from "bcrypt";
-import { UserRoles } from "../constants/UserRoles";
-import { AppDataSource } from "../database/data-source";
+import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
+import { UserRoles } from "../constants/UserRoles";
+import { AppDataSource } from "../database/data-source";
+import { User } from "../models/User";
+import { CreateClientRequestBody, LoginUserRequestBody, TokenData } from "../types/types";
 
 // -----------------------------------------------------------------------------
 
@@ -23,13 +23,13 @@ export class AuthController {
          // Crear nuevo usuario
          const newUser: User = {
             username,
-            email,
-            password_hash: bcrypt.hashSync(password, 10),
             first_name,
             last_name,
-            birthday_date,
+            email,
+            password_hash: bcrypt.hashSync(password, 10),
             phone,
-            role: UserRoles.CLIENT,
+            birthday_date,
+            role: UserRoles.CLIENT
          };
          await userRepository.save(newUser);
 
@@ -38,7 +38,7 @@ export class AuthController {
          });
       } catch (error) {
          res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            message: "Error while creating client",
+            message: "Error while creating client:" + error,
          });
       }
    }

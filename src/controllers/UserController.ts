@@ -1,12 +1,12 @@
-import { Controller } from "./Controller";
-import { Request, Response } from "express";
-import { User } from "../models/User";
-import { AppDataSource } from "../database/data-source";
-import { UserRoles } from "../constants/UserRoles";
-import { StatusCodes } from "http-status-codes";
 import bcrypt from "bcrypt";
-import { Role } from "../models/Role";
+import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
+import { UserRoles } from "../constants/UserRoles";
+import { AppDataSource } from "../database/data-source";
 import { Center } from "../models/Center";
+import { Role } from "../models/Role";
+import { User } from "../models/User";
+import { Controller } from "./Controller";
 
 // -----------------------------------------------------------------------------
 
@@ -27,6 +27,7 @@ export class UserController implements Controller {
                username: true,
                email: true,
                id: true,
+               photo: true
             },
          });
          res.status(200).json({
@@ -118,6 +119,7 @@ export class UserController implements Controller {
                username: true,
                email: true,
                id: true,
+               photo: true
             },
             where: {
                role: UserRoles.TATTOOARTIST
@@ -307,9 +309,8 @@ export class UserController implements Controller {
             where: {
                id: userId
             },
-            relations: {
-               clientAppointments: true
-            }
+            relations: ['clientAppointments', 'clientAppointments.employeeUser', 
+            'clientAppointments.center', 'clientAppointments.service']
          });
 
          if (!user) {
