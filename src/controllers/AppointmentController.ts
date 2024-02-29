@@ -1,13 +1,13 @@
-import { Controller } from "./Controller";
 import { Request, Response } from "express";
-import { User } from "../models/User";
-import { AppDataSource } from "../database/data-source";
-import { Appointment } from "../models/Appointment";
-import { Center } from "../models/Center";
-import { Service } from "../models/Service";
-import { BusinessHour } from "../models/BusinessHour";
 import { LessThanOrEqual, MoreThanOrEqual } from "typeorm";
 import { DaysOfWeek } from "../constants/BusinessHours";
+import { AppDataSource } from "../database/data-source";
+import { Appointment } from "../models/Appointment";
+import { BusinessHour } from "../models/BusinessHour";
+import { Center } from "../models/Center";
+import { Service } from "../models/Service";
+import { User } from "../models/User";
+import { Controller } from "./Controller";
 
 // -----------------------------------------------------------------------------
 
@@ -59,7 +59,9 @@ export class AppointmentController implements Controller {
             },
             relations: {
                employeeUser: true,
-               clientUser: true
+               clientUser: true,
+               service:true,
+               center: true
             }
          });
 
@@ -80,7 +82,7 @@ export class AppointmentController implements Controller {
    async create(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const data = req.body;
-
+         
          const appointmentRepository = AppDataSource.getRepository(Appointment);
          const centerRepository = AppDataSource.getRepository(Center);
          const serviceRepository = AppDataSource.getRepository(Service);
@@ -149,7 +151,7 @@ export class AppointmentController implements Controller {
          res.status(201).json(newAppointment);
       } catch (error) {
          res.status(500).json({
-            message: "Error while creating appointment",
+            message: "Error while creating appointment" + error,
          });
       }
    }

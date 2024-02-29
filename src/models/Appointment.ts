@@ -1,15 +1,16 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
-import { User } from "./User";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Center } from "./Center";
 import { Service } from "./Service";
+import { User } from "./User";
 
 @Entity("appointments")
 export class Appointment {
     @PrimaryGeneratedColumn()
     id?: number;
 
-    @Column()
-    appointment_date!: Date;
+    @Column({type: "timestamp" })
+
+    appointment_date!: string;
 
     @Column()
     modified_by!: string; 
