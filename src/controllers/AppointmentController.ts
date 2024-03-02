@@ -26,7 +26,9 @@ export class AppointmentController implements Controller {
             take: itemsPerPage,
             relations: {
                employeeUser: true,
-               clientUser: true
+               clientUser: true,
+               service:true,
+               center: true
             },
             select: {
                id: true,
@@ -244,7 +246,7 @@ export class AppointmentController implements Controller {
          });
       } catch (error) {
          res.status(500).json({
-            message: "Error while updating appointment",
+            message: "Error while updating appointment" + error,
          });
       }
    }

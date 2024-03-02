@@ -27,8 +27,12 @@ export class UserController implements Controller {
                username: true,
                email: true,
                id: true,
-               photo: true
+               photo: true,
+               register_date: true
             },
+            relations: {
+               role: true
+            }
          });
          res.status(200).json({
             count,
@@ -60,6 +64,11 @@ export class UserController implements Controller {
                username: true,
                email: true,
                id: true,
+               register_date: true,
+               photo: true
+            },
+            relations: {
+               role: true
             },
             where: {
                role: UserRoles.CLIENT
@@ -119,7 +128,9 @@ export class UserController implements Controller {
                username: true,
                email: true,
                id: true,
-               photo: true
+               photo: true,
+               first_name: true,
+               last_name: true
             },
             where: {
                role: UserRoles.TATTOOARTIST
@@ -341,9 +352,8 @@ export class UserController implements Controller {
             where: {
                id: userId
             },
-            relations: {
-               employeeAppointments: true
-            }
+            relations: ['employeeAppointments', 'employeeAppointments.center', 'employeeAppointments.clientUser'
+            , 'employeeAppointments.service']
          });
 
          if (!user) {
@@ -364,4 +374,5 @@ export class UserController implements Controller {
          });
       }
    }
+
 }
